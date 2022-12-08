@@ -6,6 +6,7 @@ export default async function fetchData<T>(url: string): Promise<T | null> {
     const json = await response.json();
     return json;
   }catch (error){
+    if(error instanceof Error) console.error("fetchData: " + error.message)
     return null;
   }
 }
