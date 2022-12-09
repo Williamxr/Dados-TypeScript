@@ -1,3 +1,4 @@
+import moedaParaNumero from "./moedaParaNumero.js";
 export default function normalizarTransacao(transacao) {
     return {
         nome: transacao.Nome,
@@ -5,8 +6,8 @@ export default function normalizarTransacao(transacao) {
         data: transacao.Data,
         status: transacao.Status,
         email: transacao.Email,
-        moeda: transacao["Valor ()"],
-        valor: 0,
+        moeda: transacao["Valor (R$)"],
+        valor: moedaParaNumero(transacao["Valor (R$)"]),
         pagamento: transacao["Forma de Pagamento ()"],
         novo: Boolean(transacao["Cliente novo ()"]),
     };
