@@ -1,5 +1,5 @@
 export default class Estatisticas {
-  transacoes;
+  private transacoes;
   constructor(transacoes: Transacao[]) {
     this.transacoes = transacoes;
   }
