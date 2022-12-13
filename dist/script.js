@@ -6,6 +6,9 @@ async function handleData() {
         return;
     const transacoes = data.map(normalizarTransacao);
     preencherTabela(transacoes);
+    preencherEstatisticas(transacoes);
+}
+function preencherEstatisticas(transacoes) {
 }
 function preencherTabela(transacoes) {
     const tabela = document.querySelector("#transacoes tbody");

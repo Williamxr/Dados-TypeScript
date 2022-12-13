@@ -7,6 +7,11 @@ async function handleData() {
   if(!data) return;
     const transacoes = data.map(normalizarTransacao);
     preencherTabela(transacoes);
+    preencherEstatisticas(transacoes);
+  }
+
+  function preencherEstatisticas(transacoes: Transacao[]):void{
+    
   }
 
   function preencherTabela(transacoes: Transacao[]): void{
