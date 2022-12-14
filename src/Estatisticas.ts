@@ -5,7 +5,7 @@ function filtrarValor(transacao: Transacao): transacao is TransacaoValor {
   return transacao.valor !== null;
 }
 
-export default class Estatisticas {
+export default class Estatiscas {
   private transacoes;
   total;
   pagamento;
@@ -16,15 +16,15 @@ export default class Estatisticas {
     this.pagamento = this.setPagamento();
     this.status = this.setStatus();
   }
-  private setTotal(){
-   return this.transacoes.filter(filtrarValor).reduce((acc, item) => {
-    return acc + item.valor;
-   }, 0);
+  private setTotal() {
+    return this.transacoes.filter(filtrarValor).reduce((acc, item) => {
+      return acc + item.valor;
+    }, 0);
   }
-  private setPagamento(){
+  private setPagamento() {
     return countBy(this.transacoes.map(({ pagamento }) => pagamento));
   }
-  private setStatus(){
+  private setStatus() {
     return countBy(this.transacoes.map(({ status }) => status));
   }
 }
