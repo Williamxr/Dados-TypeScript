@@ -2,7 +2,7 @@ import countBy from "./countBy.js";
 function filtrarValor(transacao) {
     return transacao.valor !== null;
 }
-export default class Estatisticas {
+export default class Estatiscas {
     transacoes;
     total;
     pagamento;
