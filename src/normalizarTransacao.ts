@@ -3,20 +3,21 @@ import stringToDate from "./stringToDate.js";
 
 declare global {
   type TransacaoPagamento = "Boleto" | "Cartão de Crédito";
-  type TransacaoStatus = "Paga" 
-  | "Recusada pela operadora de cartão" 
-  | "Aguaradndo pagamento" 
-  | "Estornada";
-  
-  interface TransacaoAPI{
+  type TransacaoStatus =
+    | "Paga"
+    | "Recusada pela operadora de cartão"
+    | "Agurdando pagamento"
+    | "Estornada";
+
+  interface TransacaoAPI {
     Nome: string;
     ID: number;
     Data: string;
     Status: TransacaoStatus;
     Email: string;
-    ['Valor (R$)']: string;
-    ['Forma de Pagamento ()']: TransacaoPagamento;
-    ['Cliente novo ()']: number;
+    ["Valor (R$)"]: string;
+    ["Forma de Pagamento"]: TransacaoPagamento;
+    ["Cliente Novo"]: number;
   }
 
   interface Transacao {
@@ -32,8 +33,9 @@ declare global {
   }
 }
 
-export default function normalizarTransacao(transacao: TransacaoAPI): Transacao {
-  
+export default function normalizarTransacao(
+  transacao: TransacaoAPI
+): Transacao {
   return {
     nome: transacao.Nome,
     id: transacao.ID,
@@ -42,7 +44,7 @@ export default function normalizarTransacao(transacao: TransacaoAPI): Transacao 
     email: transacao.Email,
     moeda: transacao["Valor (R$)"],
     valor: moedaParaNumero(transacao["Valor (R$)"]),
-    pagamento: transacao["Forma de Pagamento ()"],
-    novo: Boolean(transacao["Cliente novo ()"]),
-  }
+    pagamento: transacao["Forma de Pagamento"],
+    novo: Boolean(transacao["Cliente Novo"]),
+  };
 }
